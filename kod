@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Sep 21 14:29:54 2022
+
+@author: Beyza
+"""
+
+#kütüphaneyi ekleyelim
+import random
+
+#liste oluşturalım
+action_list=['rack','paper','scissors']
+
+#skor belirle
+computer_score=0
+player_score=0
+
+#kaç rond oynanacağını belirle.
+total_rounds=input("how many rounds do you to play? Plase enter a number here : ")
+
+#roundu 0 la
+round_computer=0
+
+#döngüye başla
+while True:
+    round_computer+=1
+    print("round number : ", round_computer)
+    computer_choice=random.choice(action_list)
+
+#kullanıcıya seçimini sor.
+    player_choice=input("please choose your action:")
+    print("computer:",computer_choice)
+    print("player:", player_choice)
+
+#tie condition
+    if computer_choice==player_choice:
+        print("Tie: Both player chose the some action.")
+
+#remaining conditions
+    elif computer_choice=='paper':
+        if player_choice=='rock':
+            print("wiinner is: Conputer")
+            computer_score+=1
+        else:
+            print("winner is player")
+            player_score+=1
+        
+    elif computer_choice=='rock':
+        if player_choice=='paper':
+            print("wiinner is: Player")
+            player_score+=1
+        else:
+            print("winner is computer")
+            computer_score+=1
+    
+    elif computer_choice=='scissora':
+        if player_choice=='paper':
+            print("winner is: computer")
+            computer_score+=1
+        else:
+            print("winer is : player")
+            player_score+=1
+
+#durması gerek
+        if round_computer==int(total_rounds):
+            break
+    
+if computer_score==player_score:
+    print("there is no winner, tie.", computer_score,":",player_score)
+elif computer_score>player_score:
+    print("computer won with score",computer_score,":",player_score)
+elif computer_score<player_score:
+    print("player won with score",computer_score,":",player_score)  
+    
+    
